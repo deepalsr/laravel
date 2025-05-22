@@ -39,7 +39,8 @@ class AuthController extends Controller
 
         
         }
-
+    
+//This function is used for logging out user
         public function logout(Request $request){
             
         }
