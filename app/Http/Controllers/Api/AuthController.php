@@ -5,13 +5,19 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 
+use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    public function login():string{
-        return "test login";
+    public function login(Request $request){
+        $request ->validate([
+            "email"=> "required|email",
+            "password"=> "required",
+            ]);
+            
+        
     }
 
     public function register(Request $request){
@@ -31,7 +37,11 @@ class AuthController extends Controller
                 ]);
                 }
 
-        User::create($request->all());
+        $user = User::create([
+            'name'=> $request->name,
+            'email'=> $request->email,
+            'password'=> Hash::make( $request->password),
+        ]);
 
         return response()->json([
             'message'=> 'User created successfully',
@@ -39,6 +49,8 @@ class AuthController extends Controller
 
         
         }
+
+        
     
 //This function is used for logging out user
         public function logout(Request $request){
