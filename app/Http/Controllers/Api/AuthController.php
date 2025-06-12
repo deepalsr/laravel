@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 
+use GuzzleHttp\Middleware;
 use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -78,7 +79,7 @@ class AuthController extends Controller
             
         }
 
-        public function getprofile(Request $request){
+        public function getProfile(Request $request){
         
         return 'Hello';
     }
