@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\MasterMakeController;
+use App\Http\Controllers\Api\MasterModelController;
 use App\Models\MasterMake;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,5 @@ Route::post('/register',[AuthController::class,'register']);
 Route::get('/profile',[AuthController::class,'getProfile'])->middleware('auth:sanctum');
 
 Route::apiResource('/makes',MasterMakeController::class);
+
+Route::apiResource('makes.models',MasterModelController::class);

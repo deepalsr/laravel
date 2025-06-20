@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use Faker\Provider\FakeCar;
+use Faker\Factory as FakerFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class MasterMakeFactory extends Factory
 {
+    
     /**
      * Define the model's default state.
      *
@@ -16,8 +19,13 @@ class MasterMakeFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            'name'=> fake()->name(),
+        /** @var \Faker\Generator|\Faker\Provider\FakeCar $faker */
+        $faker = FakerFactory::create();
+        $faker->addProvider(new FakeCar($faker)) ;
+
+
+        return[
+            'name'=> $faker->unique()->vehicleBrand(),
         ];
     }
 }

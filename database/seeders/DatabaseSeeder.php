@@ -24,6 +24,10 @@ class DatabaseSeeder extends Seeder
             MasterMakeSeeder::class
         ]);
 
+        $this->call([
+            MasterModelSeeder::class
+        ]);
+
         
 
 

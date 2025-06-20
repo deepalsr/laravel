@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\MasterMake;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Faker\Factory as FakerFactory;
+use Faker\Provider\FakeCar;
 
 class MasterMakeSeeder extends Seeder
 {
@@ -13,6 +15,19 @@ class MasterMakeSeeder extends Seeder
      */
     public function run(): void
     {
-        MasterMake::factory(20)->create();
+        /** @var \Faker\Generator|\Faker\Provider\FakeCar $faker */
+        $faker = FakerFactory::create();
+        $faker->addProvider(new FakeCar($faker)) ;
+
+        for($i=0;$i<20;$i++){
+            MasterMake::firstOrCreate([
+                'name' =>$faker->vehicleBrand(),
+
+            ]);
+
+        }
+
+        
+
     }
 }
