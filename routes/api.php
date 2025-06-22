@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\MasterMakeController;
 use App\Http\Controllers\Api\MasterModelController;
+use App\Http\Controllers\Api\VehicleController;
 use App\Models\MasterMake;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,3 +26,5 @@ Route::get('/profile',[AuthController::class,'getProfile'])->middleware('auth:sa
 Route::apiResource('/makes',MasterMakeController::class);
 
 Route::apiResource('makes.models',MasterModelController::class);
+
+Route::apiResource('/vehicles',VehicleController::class);

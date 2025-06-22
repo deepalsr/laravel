@@ -28,6 +28,10 @@ class DatabaseSeeder extends Seeder
             MasterModelSeeder::class
         ]);
 
+        $this->call([
+            VehicleSeeder::class
+        ]);
+
         
 
 
